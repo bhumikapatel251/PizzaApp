@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "farine-blanche-renversÃ©e-de-cuisson-sur-le-fond-noir-60752007-removebg-preview.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

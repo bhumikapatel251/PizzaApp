@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Home: View {
-    @State var selectedPizza: Pizza = Pizza[0]
+    @State var selectedPizza: PizzaViewModel = Pizza[0]
     var body: some View {
         VStack{
             HStack{
@@ -62,13 +62,38 @@ struct Home: View {
                 }
             }
             PizzaView()
+                .padding(.top,120)
+            
         }
         .padding(.horizontal,-15)
         .padding(.top,35)
     }
     @ViewBuilder
     func PizzaView()->some View{
-        let 
+        GeometryReader{proxy in
+            let size = proxy.size
+            
+            ZStack(alignment: .top){
+                Image(selectedPizza.pizzaImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: size.width, height: size.height)
+                    .background(alignment: .top, content: {
+                        Image("powder3")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: size.width)
+                            .offset(y: -30)
+                    })
+                    .scaleEffect(1.05, anchor: .top)
+                
+                ZStack(alignment: .top){
+                    
+                }
+            }
+            .offset(y: size.height / 2)
+        }
+        .padding(.top)
     }
     
 }
