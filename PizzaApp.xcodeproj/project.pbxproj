@@ -15,6 +15,7 @@
 		ACF3AE3F2874415900B74EE9 /* PizzaAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3AE3E2874415900B74EE9 /* PizzaAppUITests.swift */; };
 		ACF3AE412874415900B74EE9 /* PizzaAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3AE402874415900B74EE9 /* PizzaAppUITestsLaunchTests.swift */; };
 		ACF3AE4F2874425100B74EE9 /* PizzaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3AE4E2874425100B74EE9 /* PizzaViewModel.swift */; };
+		ACF3AE52287445CF00B74EE9 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3AE51287445CF00B74EE9 /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		ACF3AE3E2874415900B74EE9 /* PizzaAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaAppUITests.swift; sourceTree = "<group>"; };
 		ACF3AE402874415900B74EE9 /* PizzaAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		ACF3AE4E2874425100B74EE9 /* PizzaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaViewModel.swift; sourceTree = "<group>"; };
+		ACF3AE51287445CF00B74EE9 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		ACF3AE222874415700B74EE9 /* PizzaApp */ = {
 			isa = PBXGroup;
 			children = (
+				ACF3AE50287445C000B74EE9 /* View */,
 				ACF3AE4D2874423700B74EE9 /* ViewModel */,
 				ACF3AE232874415700B74EE9 /* PizzaAppApp.swift */,
 				ACF3AE252874415700B74EE9 /* ContentView.swift */,
@@ -136,6 +139,14 @@
 				ACF3AE4E2874425100B74EE9 /* PizzaViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ACF3AE50287445C000B74EE9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ACF3AE51287445CF00B74EE9 /* Home.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +281,7 @@
 			files = (
 				ACF3AE262874415700B74EE9 /* ContentView.swift in Sources */,
 				ACF3AE242874415700B74EE9 /* PizzaAppApp.swift in Sources */,
+				ACF3AE52287445CF00B74EE9 /* Home.swift in Sources */,
 				ACF3AE4F2874425100B74EE9 /* PizzaViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

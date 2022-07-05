@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  Home.swift
 //  PizzaApp
 //
 //  Created by Bhumika Patel on 05/07/22.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct Home: View {
     var body: some View {
-        Home().preferredColorScheme(.dark)
+     
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct Home_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
