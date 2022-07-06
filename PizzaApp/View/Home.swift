@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Home: View {
     @State var selectedPizza: PizzaViewModel = Pizza[0]
+    @State var swipeDirection: Alignment = .center
     var body: some View {
         VStack{
             HStack{
@@ -131,9 +132,49 @@ struct Home: View {
                 
             }
             .offset(y: size.height / 2)
-            
+            // adding Gestures
+            .gesture(
+            DragGesture()
+                .onEnded{value in
+                    let translation = value.translation.width
+                    let index = getIndex(pizza: selectedPizza)
+                    
+                    //if for left swipe
+                    if translation < 0 && -translation > 50 && index != (Pizza.count - 1){
+                        swipeDirection = .leading
+                        handleSwipe()
+                    }
+                    //for right swipe
+                    if translation > 0 && translation > 50 && index > 0{
+                        swipeDirection = .trailing
+                        handleSwipe()
+                    }
+                }
+            )
         }
         .padding(.top)
+    }
+    // Handle swipe
+    func handleSwipe(){
+        let index = getIndex(pizza: selectedPizza)
+        if swipeDirection == .leading{
+          //  print("Left")
+            withAnimation(.easeOut(duration: 0.85)){
+            selectedPizza = Pizza[index + 1]
+            }
+        }
+        if swipeDirection == .trailing{
+          //  print("Right")
+            withAnimation(.easeOut(duration: 0.85)){
+            selectedPizza = Pizza[index - 1]
+            }
+        }
+    }
+    //pizza index
+    func getIndex(pizza: PizzaViewModel)->Int{
+        return Pizza.firstIndex{ CPizza in
+            CPizza.id == pizza.id
+        } ?? 0
     }
     // price string
 //    func priceAttributedString(value: String)->AttributedString{
