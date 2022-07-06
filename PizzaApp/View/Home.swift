@@ -171,6 +171,21 @@ struct Home: View {
                         .frame(maxWidth: .infinity)
                         .foregroundColor(pizzaSize == text ? Color.orange : .white)
                         .padding(.vertical,20)
+                        .overlay(alignment: .bottom, content: {
+                            if pizzaSize == text{
+                                Circle()
+                                    .fill(Color.orange)
+                                    .frame(width: 7, height: 7)
+                                    .offset(y: 3)
+                                    .matchedGeometryEffect(id: "SIZETAB", in: animation)
+                            }
+                        })
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            withAnimation{
+                                pizzaSize = text
+                            }
+                        }
                 }
             }
             .padding(.horizontal)
