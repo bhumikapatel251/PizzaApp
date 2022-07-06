@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC8744A3287556B7005A0C0B /* ArcShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8744A2287556B7005A0C0B /* ArcShape.swift */; };
 		ACF3AE242874415700B74EE9 /* PizzaAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3AE232874415700B74EE9 /* PizzaAppApp.swift */; };
 		ACF3AE262874415700B74EE9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3AE252874415700B74EE9 /* ContentView.swift */; };
 		ACF3AE282874415900B74EE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACF3AE272874415900B74EE9 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC8744A2287556B7005A0C0B /* ArcShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcShape.swift; sourceTree = "<group>"; };
 		ACF3AE202874415700B74EE9 /* PizzaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF3AE232874415700B74EE9 /* PizzaAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaAppApp.swift; sourceTree = "<group>"; };
 		ACF3AE252874415700B74EE9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				ACF3AE51287445CF00B74EE9 /* Home.swift */,
+				AC8744A2287556B7005A0C0B /* ArcShape.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACF3AE262874415700B74EE9 /* ContentView.swift in Sources */,
+				AC8744A3287556B7005A0C0B /* ArcShape.swift in Sources */,
 				ACF3AE242874415700B74EE9 /* PizzaAppApp.swift in Sources */,
 				ACF3AE52287445CF00B74EE9 /* Home.swift in Sources */,
 				ACF3AE4F2874425100B74EE9 /* PizzaViewModel.swift in Sources */,

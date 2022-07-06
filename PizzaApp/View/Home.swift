@@ -78,6 +78,7 @@ struct Home: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: size.width, height: size.height)
+                //background powder field
                     .background(alignment: .top, content: {
                         Image("powder3")
                             .resizable()
@@ -88,13 +89,60 @@ struct Home: View {
                     .scaleEffect(1.05, anchor: .top)
                 
                 ZStack(alignment: .top){
+                    //Hiding if its first slide
+                    if Pizza.first?.id != selectedPizza.id{
+                        // left side arrow
+                        ArcShape()
+                            .trim(from: 0.05, to: 0.3)
+                            .stroke(Color.gray, lineWidth: 1)
+                            .offset(y: 12)
+                        // arrow Image
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.gray)
+                            .rotationEffect(.init(degrees: -30))
+                            .offset(x: -(size.width / 2) + 30, y: -9)
+                    }
+                    //Hiding last one
+                    if Pizza.last?.id != selectedPizza.id{
+                        // right side arrow
+                        ArcShape()
+                            .trim(from: 0.68, to: 0.95)
+                            .stroke(Color.gray, lineWidth: 1)
+                            .offset(y: 12)
+                        // arrow Image
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.gray)
+                            .rotationEffect(.init(degrees: 200))
+                            .offset(x: (size.width / 2) - 30, y: -9)
+                    }
+                    
+                        
+                    //price attribute
+                    HStack{
+                        Text("$")
+                            .font(.callout)
+                            .padding(.horizontal,-4)
+                        Text(selectedPizza.pizzaPrice)
+                            .font(.largeTitle.bold())
+                    }
+                    .offset(y: -65)
                     
                 }
+                
             }
             .offset(y: size.height / 2)
+            
         }
         .padding(.top)
     }
+    // price string
+//    func priceAttributedString(value: String)->AttributedString{
+//        var attrString = AttributedString(stringLiteral: value)
+//        if let range = attrString.range(of: "$"){
+//            attrString[range].font = .system(.callout, weight: .bold)
+//        }
+//        return attrString
+//    }
     
 }
 
