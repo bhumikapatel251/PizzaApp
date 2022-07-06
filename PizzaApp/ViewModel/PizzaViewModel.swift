@@ -18,5 +18,5 @@ struct PizzaViewModel: Identifiable{
 var Pizza: [PizzaViewModel] = [
     PizzaViewModel(pizzaImage: "Pizza1", pizzaTitle: "Chessy Pizza", pizzaDescription: "Creamy Sauce, mozzarella, cheese", pizzaPrice: "150"),
     PizzaViewModel(pizzaImage: "Pizza2", pizzaTitle: "Pepperoni Pizza", pizzaDescription: "parmesan cheese,Creamy Sauce, mozzarella, red pepper flakes", pizzaPrice: "180"),
-    PizzaViewModel(pizzaImage: "Pizza3", pizzaTitle: "Classic red Pizza", pizzaDescription: "Creamy Sauce, mozzarella,feta, red bell pepper", pizzaPrice: "210")
+    PizzaViewModel(pizzaImage: "Pizz3", pizzaTitle: "Classic red Pizza", pizzaDescription: "Creamy Sauce, mozzarella,feta, red bell pepper", pizzaPrice: "210")
 ]

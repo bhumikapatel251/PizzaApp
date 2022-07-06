@@ -10,6 +10,7 @@ import SwiftUI
 struct Home: View {
     @State var selectedPizza: PizzaViewModel = Pizza[0]
     @State var swipeDirection: Alignment = .center
+    @State var animatePizza: Bool = false
     var body: some View {
         VStack{
             HStack{
@@ -131,6 +132,8 @@ struct Home: View {
                 }
                 
             }
+            //rotation will be based on Direction
+            .rotationEffect(.init(degrees: animatePizza ? (swipeDirection == .leading ? -360 : 360) : 0))
             .offset(y: size.height / 2)
             // adding Gestures
             .gesture(
@@ -138,6 +141,8 @@ struct Home: View {
                 .onEnded{value in
                     let translation = value.translation.width
                     let index = getIndex(pizza: selectedPizza)
+                    
+                    if animatePizza{return}
                     
                     //if for left swipe
                     if translation < 0 && -translation > 50 && index != (Pizza.count - 1){
@@ -161,13 +166,19 @@ struct Home: View {
           //  print("Left")
             withAnimation(.easeOut(duration: 0.85)){
             selectedPizza = Pizza[index + 1]
+                animatePizza = true
             }
         }
         if swipeDirection == .trailing{
           //  print("Right")
             withAnimation(.easeOut(duration: 0.85)){
             selectedPizza = Pizza[index - 1]
+                animatePizza = true
             }
+        }
+        //Restoring after finishing job
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
+            animatePizza = false
         }
     }
     //pizza index
