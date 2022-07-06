@@ -11,6 +11,8 @@ struct Home: View {
     @State var selectedPizza: PizzaViewModel = Pizza[0]
     @State var swipeDirection: Alignment = .center
     @State var animatePizza: Bool = false
+    @State var pizzaSize: String = "MEDIUM"
+    @Namespace var animation
     var body: some View {
         VStack{
             HStack{
@@ -161,6 +163,23 @@ struct Home: View {
                     }
                 }
             )
+            HStack{
+                ForEach(["SMALL", "MEDIUM", "LARGE"], id: \.self){text in
+                    Text(text)
+                        .font(.callout)
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(pizzaSize == text ? Color.orange : .white)
+                        .padding(.vertical,20)
+                }
+            }
+            .padding(.horizontal)
+            .background{
+                ZStack(alignment: .top){
+                    Rectangle()
+                        .stroke(.gray.opacity(0.4), lineWidth: 1)
+                }
+            }
         }
         .padding(.top)
     }
