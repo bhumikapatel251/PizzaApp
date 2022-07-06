@@ -44,6 +44,11 @@ struct Home: View {
             AnimatedSlider()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+//        .background(content: {
+//            Rectangle()
+//                .fill(Color("BG"))
+//                .ignoresSafeArea()
+//        })
         .padding(15)
     }
     @ViewBuilder
@@ -204,7 +209,7 @@ struct Home: View {
                 }
             }
             .padding(.horizontal,20)
-            .padding(.trailing,10)
+            .padding(.top,10)
         }
         .padding(.top)
     }
