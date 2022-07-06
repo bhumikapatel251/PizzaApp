@@ -50,7 +50,9 @@ struct Home: View {
             let size = proxy.size
             LazyHStack(spacing: 0){
                 ForEach(Pizza){pizza in
-                    VStack(spacing: 0){
+                    let index = getIndex(pizza: pizza)
+                    let mainIndex = getIndex(pizza: selectedPizza)
+                    VStack(spacing: 10){
                         Text(pizza.pizzaTitle)
                             .font(.largeTitle.bold())
                         Text(pizza.pizzaDescription)
@@ -61,6 +63,9 @@ struct Home: View {
                             .padding(.top,10)
                     }
                     .frame(width: size.width, height: size.height, alignment: .top)
+                    //changing view based swipe
+                    .rotationEffect(.init(degrees: mainIndex == index ? 0 : (index > mainIndex ? 180 : -180)))
+                    .offset(x: -CGFloat(mainIndex) * size.width, y: index == mainIndex ? 0 : 40)
                 }
             }
             PizzaView()
