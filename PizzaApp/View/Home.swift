@@ -11,7 +11,7 @@ struct Home: View {
     @State var selectedPizza: PizzaViewModel = Pizza[0]
     @State var swipeDirection: Alignment = .center
     @State var animatePizza: Bool = false
-    @State var pizzaSize: String = "MEDIUM"
+    @State var pizzaSize: PizzaS = .medium
     @Namespace var animation
     var body: some View {
         VStack{
@@ -76,11 +76,11 @@ struct Home: View {
                 }
             }
             PizzaView()
-                .padding(.top,120)
+                .padding(.top,150)
             
         }
         .padding(.horizontal,-15)
-        .padding(.top,35)
+        .padding(.top,25)
     }
     @ViewBuilder
     func PizzaView()->some View{
@@ -88,19 +88,23 @@ struct Home: View {
             let size = proxy.size
             
             ZStack(alignment: .top){
-                Image(selectedPizza.pizzaImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: size.width, height: size.height)
-                //background powder field
-                    .background(alignment: .top, content: {
-                        Image("powder3")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: size.width)
-                            .offset(y: -30)
-                    })
-                    .scaleEffect(1.05, anchor: .top)
+                ZStack{
+                    Image(selectedPizza.pizzaImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: size.width, height: size.height)
+                    //background powder field
+                        .background(alignment: .top, content: {
+                            Image("powder3")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: size.width)
+                                .offset(y: -30)
+                        })
+                        .scaleEffect(1.05, anchor: .top)
+                }
+                .scaleEffect(pizzaSize == .large ? 1.1 : (pizzaSize == .medium ? 1 : 0.9))
+                   
                 
                 ZStack(alignment: .top){
                     //Hiding if its first slide
@@ -144,6 +148,7 @@ struct Home: View {
                 }
                 
             }
+            
             //rotation will be based on Direction
             .rotationEffect(.init(degrees: animatePizza ? (swipeDirection == .leading ? -360 : 360) : 0))
             .offset(y: size.height / 2)
@@ -168,32 +173,58 @@ struct Home: View {
                     }
                 }
             )
+//            HStack{
+//                ForEach(["SMALL", "MEDIUM", "LARGE"], id: \.self){text in
+//                    Text(text)
+//                        .font(.callout)
+//                        .fontWeight(.semibold)
+//                        .frame(maxWidth: .infinity)
+//                        .foregroundColor(pizzaSize == text ? Color.orange : .white)
+//                        .padding(.vertical,20)
+//                        .overlay(alignment: .bottom, content: {
+//                            if pizzaSize == text{
+//                                Circle()
+//                                    .fill(Color.orange)
+//                                    .frame(width: 7, height: 7)
+//                                    .offset(y: 3)
+//                                    .matchedGeometryEffect(id: "SIZETAB", in: animation)
+//                            }
+//                        })
+//                        .contentShape(Rectangle())
+//                        .onTapGesture {
+//                            withAnimation{
+//                                pizzaSize = text
+//
+//                            }
+//                        }
+//                }
+//            }
             HStack{
-                ForEach(["SMALL", "MEDIUM", "LARGE"], id: \.self){text in
-                    Text(text)
-                        .font(.callout)
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(pizzaSize == text ? Color.orange : .white)
-                        .padding(.vertical,20)
-                        .overlay(alignment: .bottom, content: {
-                            if pizzaSize == text{
-                                Circle()
-                                    .fill(Color.orange)
-                                    .frame(width: 7, height: 7)
-                                    .offset(y: 3)
-                                    .matchedGeometryEffect(id: "SIZETAB", in: animation)
-                            }
-                        })
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            withAnimation{
-                                pizzaSize = text
-                            }
+                ForEach(PizzaS.allCases,id: \.rawValue){size in
+                    Button{
+                        withAnimation{
+                            pizzaSize = size
                         }
+                    }label: {
+                        Text(size.rawValue)
+                            .font(.callout)
+                            .fontWeight(.semibold)
+                            .foregroundColor(pizzaSize.rawValue == size.rawValue ? Color.orange : .white)
+                            .padding()
+                            .overlay(alignment: .bottom, content: {
+                                if pizzaSize.rawValue == size.rawValue{
+                                    Circle()
+                                        .fill(Color.orange)
+                                        .frame(width: 7, height: 7)
+                                        .offset(y: 3)
+                                        .matchedGeometryEffect(id: "SIZETAB", in: animation)
+                                }
+                            })
+                    }
                 }
             }
-            .padding(.horizontal)
+            
+            .padding(.horizontal,33)
             .background{
                 ZStack(alignment: .top){
                     Rectangle()
@@ -256,4 +287,10 @@ struct Home_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
+}
+
+enum PizzaS: String,CaseIterable{
+    case small = "SMALL"
+    case medium = "MEDIUM"
+    case large = "LARGE"
 }
