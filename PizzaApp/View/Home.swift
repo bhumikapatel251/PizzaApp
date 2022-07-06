@@ -177,9 +177,19 @@ struct Home: View {
             .background{
                 ZStack(alignment: .top){
                     Rectangle()
+                        .trim(from: 0.25, to: 1)
                         .stroke(.gray.opacity(0.4), lineWidth: 1)
+                    Rectangle()
+                        .trim(from: 0, to: 0.17)
+                        .stroke(.gray.opacity(0.4), lineWidth: 1)
+                    Text("SIZE")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .offset(y: -7)
                 }
             }
+            .padding(.horizontal,20)
+            .padding(.trailing,10)
         }
         .padding(.top)
     }
